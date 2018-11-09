@@ -34,6 +34,16 @@ export class ChapiApp2Page {
     this.geolocation.getCurrentPosition().then((resp) => {
       console.log(resp);
       this.coordsActual = resp.coords;
+
+      this.map.addMarker({
+        title: '@ionic-native/google-maps',
+        icon: 'red',
+        animation: 'DROP',
+        position:{
+          lat: this.coordsActual.latitude,
+          lng: this.coordsActual.longitude
+        }
+      })
       // resp.coords.latitude
       // resp.coords.longitude
     }).catch((error) => {
@@ -41,15 +51,15 @@ export class ChapiApp2Page {
     });
     
     //le pone marker al mapa en el punto
-    this.map.addMarker({
-      title: '@ionic-native/google-maps',
-      icon: 'red',
-      animation: 'DROP',
-      position:{
-        lat: this.coordsActual.latitude,
-        lng: this.coordsActual.longitude
-      }
-    }).then((marker: Marker)=>{
+    // this.map.addMarker({
+    //   title: '@ionic-native/google-maps',
+    //   icon: 'red',
+    //   animation: 'DROP',
+    //   position:{
+    //     lat: this.coordsActual.latitude,
+    //     lng: this.coordsActual.longitude
+    //   }
+    // }).then((marker: Marker)=>{
       //eventos relacionados al marker
       // marker.showInfoWindow();
       // marker.addEventListenerOnce(GoogleMapsEvent.MARKER_CLICK).then(a=>console.log('Hola! funciono'));
@@ -63,9 +73,9 @@ export class ChapiApp2Page {
 
       // marker.off(GoogleMapsEvent.MARKER_CLICK);
       
-       marker.off();
+    //    marker.off();
 
-    })
+    // })
 
     this.map.addMarkerSync({
       title: '@ionic-native/google-maps',
