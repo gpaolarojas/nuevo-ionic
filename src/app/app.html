@@ -1,0 +1,53 @@
+<ion-menu [content]="mainContent">
+  <ion-header>
+    <ion-toolbar>
+      <ion-title>
+        Menu
+      </ion-title>
+    </ion-toolbar>
+  </ion-header>
+  <ion-content id="side-menu21">
+    <form id="menu-form3">
+      <ion-item id="menu-range2">
+        <ion-range min="0" max="10" step="1" color="positive" value="50">
+          <ion-label range-left>
+            Distancia
+          </ion-label>
+        </ion-range>
+      </ion-item>
+      <div class="spacer" style="width:268px;height:19px;" id="menu-spacer3"></div>
+    </form>
+    <div id="menu-container1">
+      <button id="menu-button1" ion-button color="dark">
+        HOY
+      </button>
+      <button id="menu-button2" ion-button color="dark">
+        Esta semana
+      </button>
+      <button id="menu-button3" ion-button color="dark">
+        Fecha
+      </button>
+    </div>
+    <div class="spacer" style="width:268px;height:50px;" id="menu-spacer1"></div>
+    <ion-list id="menu-list7">
+      <ion-item color="none" id="menu-list-item17">
+        Conciertos
+        <ion-icon name="musical-notes" item-right></ion-icon>
+      </ion-item>
+      <ion-item color="none" id="menu-list-item19">
+        Teatro
+        <ion-icon name="snapchat" item-right></ion-icon>
+      </ion-item>
+      <ion-item color="none" id="menu-list-item20">
+        Lectura
+        <ion-icon name="book" item-right></ion-icon>
+      </ion-item>
+      <ion-item color="none" id="menu-list-item21">
+        Restaurantes
+        <ion-icon name="bonfire" item-right></ion-icon>
+      </ion-item>
+    </ion-list>
+  </ion-content>
+</ion-menu>
+
+<ion-nav #mainContent [root]="rootPage"></ion-nav>
