@@ -4,6 +4,7 @@ import { NavController } from 'ionic-angular';
 
 import{ GoogleMaps, GoogleMap, Environment, Marker, BaseArrayClass, GoogleMapsEvent, MyLocationOptions, LocationService } from '@ionic-native/google-maps';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
+import {Geolocation} from '@ionic-native/geolocation';
 
 @Component({
   selector: 'page-chapi-app2',
@@ -12,7 +13,8 @@ import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 export class ChapiApp2Page {
 
   map: GoogleMap;
-  constructor(public navCtrl: NavController) {
+  coordsActual: Coordinates;
+  constructor(public navCtrl: NavController, private geolocation: Geolocation) {
   }
 
   ionViewDidLoad(){
@@ -25,32 +27,43 @@ export class ChapiApp2Page {
       'API_KEY_FOR_BROWSER_RELEASE': '',
       'API_KEY_FOR_BROWSER_DEBUG': ''
     });
+    
     //pinta el mapa
     this.map = GoogleMaps.create('map_canvas')
+    //geolocalización actual
+    this.geolocation.getCurrentPosition().then((resp) => {
+      console.log(resp);
+      this.coordsActual = resp.coords;
+      // resp.coords.latitude
+      // resp.coords.longitude
+    }).catch((error) => {
+      console.log('Error getting location', error);
+    });
+    
     //le pone marker al mapa en el punto
     this.map.addMarker({
       title: '@ionic-native/google-maps',
-      icon: 'blue',
+      icon: 'red',
       animation: 'DROP',
       position:{
-        lat: 43.0741904,
-        lng:-89.3809802
+        lat: this.coordsActual.latitude,
+        lng: this.coordsActual.longitude
       }
     }).then((marker: Marker)=>{
-      //eventos relacionados al mapa
-      marker.showInfoWindow();
-      marker.addEventListenerOnce(GoogleMapsEvent.MARKER_CLICK).then();
-      marker.one(GoogleMapsEvent.MARKER_CLICK).then();
+      //eventos relacionados al marker
+      // marker.showInfoWindow();
+      // marker.addEventListenerOnce(GoogleMapsEvent.MARKER_CLICK).then(a=>console.log('Hola! funciono'));
+      //marker.one(GoogleMapsEvent.MARKER_CLICK).then(a=> console.log("soy el uno"));
 
-      marker.addEventListener(GoogleMapsEvent.MARKER_CLICK).subscribe();
+      // marker.addEventListener(GoogleMapsEvent.MARKER_CLICK).subscribe();
 
-      marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe();
+      // marker.on(GoogleMapsEvent.MARKER_CLICK).subscribe();
 
-      marker.off(GoogleMapsEvent.MARKER_CLICK, this.onMarkerClick);
+      // // marker.off(GoogleMapsEvent.MARKER_CLICK, this.onMarkerClick);
 
-      marker.off(GoogleMapsEvent.MARKER_CLICK);
+      // marker.off(GoogleMapsEvent.MARKER_CLICK);
       
-      marker.off();
+       marker.off();
 
     })
 
@@ -81,7 +94,7 @@ export class ChapiApp2Page {
       {
         position: {lat:41.79637, lng: 140.76018000000002},
         title: "4",
-        iconData: "blue"
+        iconData: "purple"
       },
       {
         position: {lat:41.79567, lng: 140.75845},
@@ -91,19 +104,19 @@ export class ChapiApp2Page {
     ]);
 
     //para reconocer la posicion actual
-    let option: MyLocationOptions ={
-      enableHighAccuracy: true
-    };
+    // let option: MyLocationOptions ={
+    //   enableHighAccuracy: true
+    // };
 
-    LocationService.getMyLocation(option).then(location: myLocationService) => {
-      this.map = GoogleMaps.create({
-        'camera': location.latLng ,
-        'zoom':16
-      });
-    }).catch((error: any) => {
-      //can no get location, permission refused--
-      console.log(error);
-    });
+    // LocationService.getMyLocation(option).then(location: MyLocation) => {
+    //   this.map = GoogleMaps.create({
+    //     'camera': location.latLng ,
+    //     'zoom':16
+    //   });
+    // }).catch((error: any) => {
+    //   //can no get location, permission refused--
+    //   console.log(error);
+    // });
 
     
     
