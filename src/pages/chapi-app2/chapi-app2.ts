@@ -2,7 +2,7 @@ import { Component } from '@angular/core';
 import { NavController } from 'ionic-angular';
 
 
-import{ GoogleMaps, GoogleMap, Environment, Marker, BaseArrayClass, GoogleMapsEvent, MyLocationOptions, LocationService } from '@ionic-native/google-maps';
+import{ GoogleMaps, GoogleMap, Environment, Marker, BaseArrayClass, GoogleMapsEvent, MyLocationOptions, LocationService, GoogleMapZoomOptions } from '@ionic-native/google-maps';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import {Geolocation} from '@ionic-native/geolocation';
 
@@ -14,6 +14,9 @@ export class ChapiApp2Page {
 
   map: GoogleMap;
   coordsActual: Coordinates;
+  //zoomActual: GoogleMapZoomOptions;
+
+
   constructor(public navCtrl: NavController, private geolocation: Geolocation) {
   }
 
@@ -43,6 +46,14 @@ export class ChapiApp2Page {
           lat: this.coordsActual.latitude,
           lng: this.coordsActual.longitude
         }
+      })
+      //zoom mapa con la posicion actual
+      this.map.moveCamera({
+        target: {
+          lat: this.coordsActual.latitude,
+          lng: this.coordsActual.longitude
+        },
+        zoom: 10
       })
       // resp.coords.latitude
       // resp.coords.longitude
@@ -77,15 +88,15 @@ export class ChapiApp2Page {
 
     // })
 
-    this.map.addMarkerSync({
-      title: '@ionic-native/google-maps',
-      icon: 'blue',
-      animation: 'DROP',
-      position: {
-        lat: 43.0741904,
-        lng: -89.3809802
-      }
-    });
+    // this.map.addMarkerSync({
+    //   title: '@ionic-native/google-maps',
+    //   icon: 'blue',
+    //   animation: 'DROP',
+    //   position: {
+    //     lat: 43.0741904,
+    //     lng: -89.3809802
+    //   }
+    // });
 
 
     let POINTS: BaseArrayClass<any> = new BaseArrayClass<any>([

@@ -5,6 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 
+
 import { ChapiAppPage } from '../pages/chapi-app/chapi-app';
 
 
@@ -36,3 +37,20 @@ export class MyApp {
   }
   
 }
+export class BasicPage {
+  public distance: number = 0;
+
+  constructor() {
+    //console.log("soy la primera ditancia:" + this.distance);
+  }
+  
+
+  change(e) {
+    this.distance= e;
+      console.log(this.distance);
+    
+  }
+  
+}
+
+

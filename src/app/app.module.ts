@@ -11,6 +11,7 @@ import { EventDescript3Page } from '../pages/event-descript3/event-descript3';
 import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { InteresesPage } from '../pages/intereses/intereses';
+import { FormsModule } from '@angular/forms';
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -35,6 +36,7 @@ import {Geolocation} from "@ionic-native/geolocation"
   ],
   imports: [
     BrowserModule,
+    FormsModule,
     IonicModule.forRoot(MyApp)
   ],
   bootstrap: [IonicApp],

@@ -8,11 +8,13 @@
   </ion-header>
   <ion-content id="side-menu21">
     <form id="menu-form3">
-      <ion-item id="menu-range2">
-        <ion-range min="0" max="10" step="1" color="positive" value="50">
-          <ion-label range-left>
+        <h3>
             Distancia
-          </ion-label>
+        </h3>
+      <ion-item>
+        <ion-range id= "distance" [(ngModel)]="distance" [ngModelOptions]="{standalone: true}" min="0" max="5" (ionChange)="change($event)" pin= true color="positive" >
+          <ion-label range-left>0Km</ion-label>
+          <ion-label range-right>5Km</ion-label>
         </ion-range>
       </ion-item>
       <div class="spacer" style="width:268px;height:19px;" id="menu-spacer3"></div>
