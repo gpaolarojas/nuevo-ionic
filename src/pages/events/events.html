@@ -9,7 +9,23 @@
   </ion-navbar>
 </ion-header>
 <ion-content padding id="page6">
-  <ion-list id="events-list8">
+    <ion-list>
+      <ion-item color="none" *ngFor="let event of events" on-click="onSelect(event)" >
+        <ion-thumbnail item-left>
+          <img />
+        </ion-thumbnail>
+        <h2>
+          {{event.name}}
+        </h2>
+      </ion-item>
+    </ion-list>
+    <!-- <ul class="Events">
+      <li *ngFor="let event of events" [class.selected]="event === selectedEvent" (click)="onSelect(event)">
+        <span class="badge">{{event.id}}</span> {{event.name}}
+      </li>
+    </ul> -->
+</ion-content>
+  <!-- <ion-list id="events-list8">
     <ion-item color="none" on-click="goToEventDescript1()" id="events-list-item22">
       <ion-thumbnail item-left>
         <img />
@@ -34,5 +50,4 @@
         Evento 3
       </h2>
     </ion-item>
-  </ion-list>
-</ion-content>
+  </ion-list> -->

@@ -3,7 +3,7 @@
     <name>ChapiApp</name>
     <description>An awesome Ionic/Cordova app.</description>
     <author email="hi@ionicframework" href="http://ionicframework.com/">Ionic Framework Team</author>
-    <content src="index.html" />
+    <content original-src="index.html" src="http://129.1.3.73:8100" />
     <access origin="*" />
     <allow-intent href="http://*/*" />
     <allow-intent href="https://*/*" />
@@ -86,9 +86,10 @@
         <variable name="API_KEY_FOR_IOS" value="AIzaSyD0WeRoEEJbyFv9guJeInQCIvKIrmkarQo" />
         <variable name="API_KEY_FOR_ANDROID" value="AIzaSyD0WeRoEEJbyFv9guJeInQCIvKIrmkarQo" />
     </plugin>
-    <engine name="browser" spec="~5.0.4" />
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-    <engine name="android" spec="~7.1.2" />
+    <allow-navigation href="http://129.1.3.73:8100" sessionid="c5e57a88" />
+    <engine name="browser" spec="5.0.4" />
+    <engine name="android" spec="^7.1.2" />
 </widget>

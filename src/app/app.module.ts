@@ -12,6 +12,9 @@ import { SignupPage } from '../pages/signup/signup';
 import { LoginPage } from '../pages/login/login';
 import { InteresesPage } from '../pages/intereses/intereses';
 import { FormsModule } from '@angular/forms';
+import { HttpClientModule }    from '@angular/common/http';
+import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
+
 
 
 import { StatusBar } from '@ionic-native/status-bar';
@@ -20,6 +23,9 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 import {GoogleMaps} from "@ionic-native/google-maps";
 import {Geolocation} from "@ionic-native/geolocation"
+import { MapServiceProvider } from '../providers/map.service/map.service';
+
+
 
 @NgModule({
   declarations: [
@@ -37,7 +43,9 @@ import {Geolocation} from "@ionic-native/geolocation"
   imports: [
     BrowserModule,
     FormsModule,
-    IonicModule.forRoot(MyApp)
+    IonicModule.forRoot(MyApp),
+    HttpClientModule,
+
   ],
   bootstrap: [IonicApp],
   entryComponents: [
@@ -57,7 +65,10 @@ import {Geolocation} from "@ionic-native/geolocation"
     SplashScreen,
     GoogleMaps,
     Geolocation,
-    {provide: ErrorHandler, useClass: IonicErrorHandler}
+    {provide: ErrorHandler, useClass: IonicErrorHandler},
+    MapServiceProvider,
+    
+    
   ]
 })
 export class AppModule {}

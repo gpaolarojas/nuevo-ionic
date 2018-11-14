@@ -12,9 +12,9 @@
             Distancia
         </h3>
       <ion-item>
-        <ion-range id= "distance" [(ngModel)]="distance" [ngModelOptions]="{standalone: true}" min="0" max="5" (ionChange)="change($event)" pin= true color="positive" >
+        <ion-range id= "distance" [(ngModel)]="valor" [ngModelOptions]="{standalone: true}" min="0" max="8" val = "3" (ionChange)="change($event)" pin= true color="positive" >
           <ion-label range-left>0Km</ion-label>
-          <ion-label range-right>5Km</ion-label>
+          <ion-label range-right>8Km</ion-label>
         </ion-range>
       </ion-item>
       <div class="spacer" style="width:268px;height:19px;" id="menu-spacer3"></div>

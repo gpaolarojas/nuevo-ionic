@@ -7,6 +7,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 import { ChapiAppPage } from '../pages/chapi-app/chapi-app';
+import { MapServiceProvider } from '../providers/map.service/map.service';
 
 
 
@@ -17,7 +18,7 @@ export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
     rootPage:any = ChapiAppPage;
 
-  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen) {
+  constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private mapServiceProvider: MapServiceProvider) {
     platform.ready().then(() => {
       // Okay, so the platform is ready and our plugins are available.
       // Here you can do any higher level native things you might need.
@@ -35,22 +36,14 @@ export class MyApp {
       this.splashScreen.hide();
     })
   }
-  
-}
-export class BasicPage {
-  public distance: number = 0;
-
-  constructor() {
-    //console.log("soy la primera ditancia:" + this.distance);
+  //el valor del range
+  change(valor) {
+      this.mapServiceProvider.setZoom(valor.value);
+      console.log(valor.value);
+      this.mapServiceProvider.mapData.emit(valor.value)
   }
   
-
-  change(e) {
-    this.distance= e;
-      console.log(this.distance);
-    
-  }
-  
+  public valor: number = 0;
 }
 
 
