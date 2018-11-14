@@ -89,7 +89,7 @@
     <plugin name="cordova-plugin-geolocation" spec="^4.0.1">
         <variable name="GEOLOCATION_USAGE_DESCRIPTION" value="To locate you" />
     </plugin>
-    <allow-navigation href="http://129.1.3.73:8100" sessionid="c5e57a88" />
+    <allow-navigation href="http://129.1.3.73:8100" sessionid="cc501351" />
     <engine name="browser" spec="5.0.4" />
     <engine name="android" spec="^7.1.2" />
 </widget>

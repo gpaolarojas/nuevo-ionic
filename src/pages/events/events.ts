@@ -26,7 +26,8 @@ export class EventsPage  implements OnInit{
   }
   selectedEvent: Event;
 
-  onSelect(event: Event): void {
+  onSelect(event_id: number): void {
+    this.mapServiceProvider.setId(event_id);
     this.navCtrl.push(EventDescript1Page);
   }
 }

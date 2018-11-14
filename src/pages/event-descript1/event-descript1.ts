@@ -22,8 +22,8 @@ export class EventDescript1Page implements OnInit {
   }
 
   getEvent(): void{
-    const id = +this.route.snapshot.paramMap.get('id');
-    this.MapServiceProvider.getEvent(id)
+ 
+    this.MapServiceProvider.getEvent()
       .subscribe(event => this.event = event);
   }
 }

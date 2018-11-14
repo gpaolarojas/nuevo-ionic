@@ -27,6 +27,7 @@ export class MapServiceProvider {
   map: GoogleMap;
   coordsActual: Coordinates;
   zoomActual: number = 0;
+  event_id: number = 0;
   private eventsUrl = base + "events";  // URL to web api
 
   getZoom(){
@@ -45,12 +46,18 @@ export class MapServiceProvider {
     return this.http.get<Event[]>(base + "events")
   }
  //obtener evento por id
-  getEvent(id: number):Observable<Event> {
-      const url = `${this.eventsUrl}/${id}`;
+  getEvent():Observable<Event> {
+      const url = `${this.eventsUrl}/${this.event_id}`;
       return this.http.get<Event>(url).pipe(
-        catchError(this.handleError<Event>(`getEvent id=${id}`))
+        catchError(this.handleError<Event>(`getEvent id=${this.event_id}`))
       );
   }
+
+  setId(id: number){
+    this.event_id = id;
+  }
+
+
   
   private handleError<T>(operation = 'operation', result?: T) {
     return (error: any): Observable<T> => {
