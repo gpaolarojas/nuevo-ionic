@@ -1,8 +1,8 @@
 import { Component } from '@angular/core';
-import { NavController } from 'ionic-angular';
+import { NavController, Events } from 'ionic-angular';
 
 
-import { GoogleMaps, GoogleMap, Environment, Marker, BaseArrayClass, GoogleMapsEvent, MyLocationOptions, LocationService, GoogleMapZoomOptions } from '@ionic-native/google-maps';
+import { GoogleMaps, GoogleMap, Environment, Marker, BaseArrayClass, GoogleMapsEvent, MyLocationOptions, LocationService, GoogleMapZoomOptions, MarkerOptions, MarkerCluster, Circle } from '@ionic-native/google-maps';
 import { THIS_EXPR } from '@angular/compiler/src/output/output_ast';
 import { Geolocation } from '@ionic-native/geolocation';
 
@@ -17,6 +17,12 @@ export class ChapiApp2Page {
   map: GoogleMap;
   coordsActual: Coordinates;
   zoomActual: number = 0;
+  events: Event[];
+  latEvent: number = 0;
+  longEvent: number = 0;
+  infoMarker= [];
+  nameEvent: string = "";
+  namePlace: string = "";
 
 
   constructor(public navCtrl: NavController, private geolocation: Geolocation, private mapServiceProvider: MapServiceProvider) {
@@ -24,11 +30,13 @@ export class ChapiApp2Page {
       (data: any) => {
         console.log("Llegó a la sub")
         this.loadMap();
+        
     });
   }
 
   ionViewDidLoad() {
     this.initMap();
+    this.loadEvents();
   }
 
   initMap(){
@@ -45,7 +53,6 @@ export class ChapiApp2Page {
       this.coordsActual = resp.coords;
 
       this.map.addMarker({
-        title: '@ionic-native/google-maps',
         icon: 'red',
         animation: 'DROP',
         position: {
@@ -53,6 +60,17 @@ export class ChapiApp2Page {
           lng: this.coordsActual.longitude
         }
       })
+      .then((marker:Marker)=>{
+        this.map.addCircle({
+          center:marker.getPosition(),
+          radius: 10,
+          fillColor:"rgba(0, 0, 255, 0.5)",
+          strokeColor: "rgba(0, 0, 255, 0.5)",
+          strokeWidth: 1
+        }).then((circle: Circle)=>{
+          marker.bindTo("position", circle, "center");
+        });
+      });
       //zoom mapa con la posicion actual
       this.map.moveCamera({
         target: {
@@ -71,6 +89,46 @@ export class ChapiApp2Page {
 
   }
 
+  loadEvents(){
+    var markersData= new Array();
+    this.mapServiceProvider.getEvents()
+    .subscribe(events => { for (let i = 0; i < events.length; i++) {
+      const event = events[i];
+      this.latEvent = event['lat'];
+      this.longEvent = event['long'];
+      this.nameEvent = event['name'];
+      this.namePlace = event['placeName'];
+      console.log("soy lo que buscas" + event['lat'] + event['long']+ event['placeName']+ event['name']);
+      markersData.push(
+        {
+          position: {lat: this.latEvent, lng: this.longEvent},
+          name: this.nameEvent,
+          address: this.namePlace
+          
+        }
+      );
+    }
+
+    this.map.addMarkerCluster({
+      markers: markersData,
+      icons:[
+        {
+          min: 1, max: 9,
+          url: "../../assets/icon/eventMarkerGraph.png",
+          label: {color: 'white'}
+        }
+      ]
+    }).then((markerCluster: MarkerCluster)=>{
+      markerCluster.on(GoogleMapsEvent.MARKER_CLICK).subscribe((infoMarker)=>{
+        let marker: Marker = infoMarker[1];
+        marker.setTitle(marker.get('name'));
+        marker.setSnippet(marker.get('address'));
+        marker.showInfoWindow();
+      });
+    })
+    });
+  }
+
   loadMap() {
 
     this.map.moveCamera({
@@ -79,13 +137,9 @@ export class ChapiApp2Page {
         lng: this.coordsActual.longitude
       },
       zoom: 20-this.mapServiceProvider.getZoom()
-      
-      //zoom: 1
-      
     })
+
+    
     console.log(this.mapServiceProvider.getZoom());
   }
-
-
-
 }

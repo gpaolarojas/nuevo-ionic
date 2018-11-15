@@ -12,6 +12,8 @@ import { MapServiceProvider } from '../../providers/map.service/map.service';
 })
 export class EventsPage  implements OnInit{
   events: Event[];
+  log: Coordinates;
+  lat: Coordinates;
   
   constructor(public navCtrl: NavController, private mapServiceProvider: MapServiceProvider) { }
  
@@ -31,17 +33,4 @@ export class EventsPage  implements OnInit{
     this.navCtrl.push(EventDescript1Page);
   }
 }
-
-  // constructor(public navCtrl: NavController) {
-  // }
-  // goToEventDescript1(params){
-  //   if (!params) params = {};
-  //   this.navCtrl.push(EventDescript1Page);
-  // }goToEventDescript2(params){
-  //   if (!params) params = {};
-  //   this.navCtrl.push(EventDescript2Page);
-  // }goToEventDescript3(params){
-  //   if (!params) params = {};
-  //   this.navCtrl.push(EventDescript3Page);
-  // }
 
