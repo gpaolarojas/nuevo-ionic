@@ -28,13 +28,13 @@ export class LoginPage {
   signInWithFacebook() {
     this.afAuth.auth
       .signInWithPopup(new firebase.auth.FacebookAuthProvider())
-      .then(res => this.navCtrl.push(ChapiAppPage));
+      this.navCtrl.push(ChapiAppPage)
   }
 
   signInWithGoogle() {
     this.afAuth.auth
       .signInWithPopup(new firebase.auth.GoogleAuthProvider())
-      .then(res => this.navCtrl.push(ChapiAppPage));
+      this.navCtrl.push(ChapiAppPage)
   }
 
   signOut() {
