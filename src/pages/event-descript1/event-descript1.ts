@@ -22,7 +22,6 @@ export class EventDescript1Page implements OnInit {
   }
 
   getEvent(): void{
- 
     this.MapServiceProvider.getEvent()
       .subscribe(event => this.event = event);
   }

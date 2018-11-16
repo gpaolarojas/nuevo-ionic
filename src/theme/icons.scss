@@ -1,0 +1,94 @@
+@font-face {
+  font-family: 'icomoon';
+  src:  url('../assets/fonts/icomoon.eot?5j2114');
+  src:  url('../assets/fonts/icomoon.eot?5j2114#iefix') format('embedded-opentype'),
+    url('../assets/fonts/icomoon.ttf?5j2114') format('truetype'),
+    url('../assets/fonts/icomoon.woff?5j2114') format('woff'),
+    url('../assets/fonts/icomoon.svg?5j2114#icomoon') format('svg');
+  font-weight: normal;
+  font-style: normal;
+}
+
+
+
+[class^="ion-ios-icon"], [class*="ion-ios-icon"],
+[class^="ion-md-icon"], [class*="ion-md-icon"] {
+  /* use !important to prevent issues with browser extensions that change fonts */
+  font-family: 'icomoon' !important;
+  speak: none;
+  font-style: normal;
+  font-weight: normal;
+  font-variant: normal;
+  text-transform: none;
+  line-height: 1;
+
+  /* Better Font Rendering =========== */
+  -webkit-font-smoothing: antialiased;
+  -moz-osx-font-smoothing: grayscale;
+}
+
+@mixin makeIcon($arg, $val){
+  .#{$arg}:before ,
+  .ion-ios-#{$arg}:before ,
+  .ion-ios-#{$arg}-outline:before ,
+  .ion-md-#{$arg}:before ,
+  .ion-md-#{$arg}-outline:before {
+    content: $val;
+    font-size: 26px;
+  }
+}
+
+.dollar-sign:before ,
+.ion-ios-dollar-sign:before ,
+.ion-ios-dollar-sign-outline:before ,
+.ion-md-dollar-sign:before ,
+.ion-md-dollar-sign-outline:before {
+    content: '\e907';
+    font-size: 26px;
+  }
+
+@include makeIcon(arrow-left,'\e900');
+@include makeIcon(arrow-right,'\e901');
+@include makeIcon(book-open,'\e902');
+@include makeIcon(bookmark,'\e903');
+@include makeIcon(calendar1-left,'\e904');
+@include makeIcon(camera,'\e905');
+@include makeIcon(clock1,'\e906');
+@include makeIcon(dollar-sign,'\e907');
+@include makeIcon(facebook,'\e908');
+@include makeIcon(flag,'\e909');
+@include makeIcon(gift,'\e90a');
+@include makeIcon(globe,'\e90b');
+@include makeIcon(heart,'\e90c');
+@include makeIcon(help-circle,'\e90d');
+@include makeIcon(instagram,'\e90e');
+@include makeIcon(loader,'\e90f');
+@include makeIcon(map,'\e910');
+@include makeIcon(map-pin,'\e911');
+@include makeIcon(menu,'\e912');
+@include makeIcon(moon,'\e913');
+@include makeIcon(more-horizontal,'\e914');
+@include makeIcon(more-vertical,'\e915');
+@include makeIcon(music,'\e916');
+@include makeIcon(navigation-2,'\e917');
+@include makeIcon(phone,'\e918');
+@include makeIcon(power,'\e919');
+@include makeIcon(settings,'\e91a');
+@include makeIcon(share-2,'\e91b');
+@include makeIcon(shopping-cart,'\e91c');
+@include makeIcon(star,'\e91d');
+@include makeIcon(instagram,'\e91e');
+@include makeIcon(thumbs-down,'\e91f');
+@include makeIcon(thumbs-up,'\e920');
+@include makeIcon(toggle-left,'\e921');
+@include makeIcon(toggle-right,'\e922');
+@include makeIcon(trash-2,'\e923');
+@include makeIcon(twitter,'\e924');
+@include makeIcon(watch,'\e925');
+@include makeIcon(zoom-in,'\e926');
+@include makeIcon(zoom-out,'\e927');
+@include makeIcon(clock,'\e928');
+@include makeIcon(calendar,'\e929');
+@include makeIcon(map-marker,'\e92a');
+@include makeIcon(store,'\e92b');
+@include makeIcon(location,'\e92c');

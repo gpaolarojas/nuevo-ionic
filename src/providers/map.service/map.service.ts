@@ -28,6 +28,7 @@ export class MapServiceProvider {
   coordsActual: Coordinates;
   zoomActual: number = 0;
   event_id: number = 0;
+  event_coords: Coordinates;
   private eventsUrl = base + "events";  // URL to web api
 
   getZoom(){
@@ -39,8 +40,9 @@ export class MapServiceProvider {
   }
 
 
-  //obtener los eventos
+  //obtener todos los eventos
   constructor(private http: HttpClient) { }
+  
   getEvents(): Observable<Event[]> {
     console.log(base);
     return this.http.get<Event[]>(base + "events")
@@ -52,10 +54,12 @@ export class MapServiceProvider {
         catchError(this.handleError<Event>(`getEvent id=${this.event_id}`))
       );
   }
-
+  //recibe Id
   setId(id: number){
     this.event_id = id;
   }
+
+
 
 
   

@@ -12,10 +12,10 @@
     <ion-list>
       <ion-item color="none" *ngFor="let event of events" on-click="onSelect(event.id)" >
         <ion-thumbnail item-left>
-          <img />
+          <img src="assets/img/logoChapi.png"/>
         </ion-thumbnail>
         <h2>
-          {{event.name}}
+          {{event.name|uppercase}}
         </h2>
       </ion-item>
     </ion-list>

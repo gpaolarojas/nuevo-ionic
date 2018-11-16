@@ -4,42 +4,43 @@
       <ion-icon name="menu"></ion-icon>
     </button>
     <ion-title>
+      ChapiApp
     </ion-title>
   </ion-navbar>
 </ion-header>
+
 <ion-content padding id="page7">
-  <!-- <h1 [(ngModel)]="event.name" id="eventDescript1-heading1" style="color:#000000;">
+  <div *ngIf="event">
+  <h1  id="eventDescript1-heading1" style="color:#000000;">
       {{event.name|uppercase}}
-  </h1> -->
-  <img src="assets/img/MX9tHdaUTJSkvutxzir5_kiss.jpg" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
+  </h1>
+  <img  src="assets/img/logoChapi.png" style="display:block;width:100%;height:auto;margin-left:auto;margin-right:auto;" />
   <ion-card id="eventDescript1-card21">
     <ion-list>
       <div style="width:100%;height:220px;margin:0px 0px;line-height:250px;background-color:#e8ebef;text-align:center;">
         <i class="icon ion-image" style="font-size:64px;color:#888;vertical-align:middle;"></i>
+        {{event.description_event}}
       </div>
       <ion-item color="none" id="eventDescript1-list-item29">
-        <ion-avatar item-left>
-          <img />
-        </ion-avatar>
         <h2>
-          <!-- {{event.name|uppercase}} -->
-          <!-- cambiar a place -->
+          Lugar: {{event.placeName | uppercase }}
         </h2>
       </ion-item>
     </ion-list>
-  </ion-card>
+  </ion-card> 
   <div id="eventDescript1-container3">
     <button id="eventDescript1-button5" ion-button color="positive" icon-left>
-      <ion-icon name="alarm"></ion-icon>
-      <!-- Hora: {{event.date}} -->
+      <ion-icon name="clock"></ion-icon>
+      Hora: {{event.date | date:'shortTime'}}
     </button>
     <button id="eventDescript1-button6" ion-button color="positive">
       <ion-icon name="calendar"></ion-icon>
-      <!-- Fecha:{{event.date}} -->
+      Fecha: {{event.date | date}}
     </button>
     <button id="eventDescript1-button7" ion-button color="positive">
       <ion-icon name="cash"></ion-icon>
-      <!-- Valor:{{event.charge}} -->
+      Valor: {{event.charge}}
     </button>
   </div>
+</div>
 </ion-content>
