@@ -5,7 +5,7 @@ import { SplashScreen } from '@ionic-native/splash-screen';
 
 
 
-
+import { LoginPage } from '../pages/login/login';
 import { ChapiAppPage } from '../pages/chapi-app/chapi-app';
 import { MapServiceProvider } from '../providers/map.service/map.service';
 
@@ -16,7 +16,7 @@ import { MapServiceProvider } from '../providers/map.service/map.service';
 })
 export class MyApp {
   @ViewChild(Nav) navCtrl: Nav;
-    rootPage:any = ChapiAppPage;
+    rootPage:any = LoginPage;
 
   constructor(public platform: Platform, public statusBar: StatusBar, public splashScreen: SplashScreen, private mapServiceProvider: MapServiceProvider) {
     platform.ready().then(() => {
@@ -30,7 +30,7 @@ export class MyApp {
 
   initializeApp(){
     this.platform.ready().then(()=> {
-      this.rootPage= ChapiAppPage;
+      this.rootPage= LoginPage;
 
       this.statusBar.styleDefault();
       this.splashScreen.hide();

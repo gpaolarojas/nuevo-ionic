@@ -15,17 +15,25 @@ import { FormsModule } from '@angular/forms';
 import { HttpClientModule }    from '@angular/common/http';
 import { HttpClientInMemoryWebApiModule } from 'angular-in-memory-web-api';
 
-
-
 import { StatusBar } from '@ionic-native/status-bar';
 import { SplashScreen } from '@ionic-native/splash-screen';
 
-
 import {GoogleMaps} from "@ionic-native/google-maps";
-import {Geolocation} from "@ionic-native/geolocation"
+import {Geolocation} from "@ionic-native/geolocation";
 import { MapServiceProvider } from '../providers/map.service/map.service';
 
+import { AngularFireModule } from 'angularfire2';
+import { AngularFireDatabaseModule, AngularFireDatabase } from 'angularfire2/database';
+import { AngularFireAuthModule } from 'angularfire2/auth';
 
+export const firebaseConfig = {
+  apiKey: "AIzaSyBjxn1BS4Gew_Gi1AxS_rZPVkYVQAUy7Rw",
+  authDomain: "chapiapp-7f917.firebaseapp.com",
+  databaseURL: "https://chapiapp-7f917.firebaseio.com",
+  projectId: "chapiapp-7f917",
+  storageBucket: "chapiapp-7f917.appspot.com",
+  messagingSenderId: "521108460675"
+};
 
 @NgModule({
   declarations: [
@@ -45,7 +53,9 @@ import { MapServiceProvider } from '../providers/map.service/map.service';
     FormsModule,
     IonicModule.forRoot(MyApp),
     HttpClientModule,
-
+    AngularFireModule.initializeApp(firebaseConfig),
+    AngularFireDatabaseModule,
+    AngularFireAuthModule
   ],
   bootstrap: [IonicApp],
   entryComponents: [

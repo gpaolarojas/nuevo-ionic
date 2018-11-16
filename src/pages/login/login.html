@@ -1,35 +1,35 @@
 <ion-header>
   <ion-navbar>
-    <button ion-button menuToggle>
-      <ion-icon name="menu"></ion-icon>
-    </button>
     <ion-title>
-      Login
+      Chapi App
     </ion-title>
   </ion-navbar>
 </ion-header>
-<ion-content padding id="page11">
-  <form id="login-form8">
-    <ion-list id="login-list11">
-      <ion-item id="login-input4">
-        <ion-label>
-          Email
-        </ion-label>
-        <ion-input type="email" placeholder=""></ion-input>
-      </ion-item>
-      <ion-item id="login-input5">
-        <ion-label>
-          Password
-        </ion-label>
-        <ion-input type="password" placeholder=""></ion-input>
-      </ion-item>
-    </ion-list>
-    <div class="spacer" style="height:40px;" id="login-spacer4"></div>
-    <button id="login-button15" ion-button color="stable" block>
-      Log in
-    </button>
-    <button id="login-button16" ion-button clear color="positive" block href-inappbrowser="/signup">
-      Or create an account
-    </button>
-  </form>
+
+<!-- <ion-content padding>
+  <button ion-button icon-center  (click)="signInWithFacebook()">
+    Login with  .
+    <ion-icon name="logo-facebook"></ion-icon>
+  </button>
+  <br><br>
+  <button ion-button icon-center  (click)="signInWithGoogle()">
+    Login with   .
+    <ion-icon name="logo-google"></ion-icon>
+  </button>
+</ion-content> -->
+
+
+<ion-content>
+    <ion-card>
+        <img src='https://i.postimg.cc/JysH56cP/img-chapiapp.jpg' border='0' alt='img-chapiapp'/>
+         <button ion-button icon-start full (click)="signInWithFacebook()">
+            <ion-icon name="logo-facebook"></ion-icon>
+              <b> Login with Facebook</b>              
+          </button>
+
+         <button ion-button icon-start color="danger" full (click)="signInWithGoogle()">
+            <ion-icon name="logo-google"></ion-icon>    
+            <b> Login with Google</b>  
+          </button>
+        </ion-card>
 </ion-content>
